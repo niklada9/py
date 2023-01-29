@@ -10,7 +10,7 @@ def alphabet_position(text):
                 #answer = str(answer) + str(alphabet[i]) + " "
                 lst.append(alphabet[i])
                 answer = ' '.join(lst)
-    #print(answer)
+    print(answer)
     return (answer)
-    #pass
+
 alphabet_position("The sunset sets at twelve o' clock.")
