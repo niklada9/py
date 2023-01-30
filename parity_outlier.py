@@ -5,27 +5,38 @@
 # and returns this "outlier"
 
 def find_outlier(integers: object) -> object:
-    # odd_true = False
-    # odd_answer = 0
-    even_true: bool = False
+    odd_more_than_one: bool = False
+    even_more_than_one: bool = False
+    answer_not_even: bool = False
+    answer_not_odd: bool = False
+    odd_answer = 0
     even_answer = 0
-    answer_not_even = False
     answer = 0
     i: int
     for i in integers:
         if i % 2 == 0:
-            even_answer = i
-            if not even_true:
-                even_true = True
+            if not even_more_than_one:
+                even_answer = i
+                even_more_than_one = True
             else:
                 answer_not_even = True
-        odd_answer = i
-        if answer_not_even:
-            answer = odd_answer
         else:
+            if not odd_more_than_one:
+                odd_answer = i
+                odd_more_than_one = True
+            else:
+                answer_not_odd = True
+
+        if answer_not_even and not answer_not_odd:
+            answer = odd_answer
+        elif answer_not_odd and not answer_not_even:
             answer = even_answer
-    return answer
+        else:
+            pass
+            # print('wrong input')
+            # answer = even_answer
     print(answer)
+    return answer
 
     # return None
 
@@ -35,6 +46,7 @@ find_outlier(lst)
 lst = [2, 4, 0, 100, 4, 11, 2602, 36]
 find_outlier(lst)
 lst = [160, 3, 1719, 19, 11, 13, -21]
+find_outlier(lst)
 # find_outlier[2, 4, 6, 8, 10, 3]
 # find_outlier[2, 4, 0, 100, 4, 11, 2602, 36]
 # find_outlier[160, 3, 1719, 19, 11, 13, -21]
